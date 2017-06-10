@@ -1,1 +1,96 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("assets/images/home_background.png") no-repeat center center fixed;
+    /*background: rgba(126,0,18, 0.9);*/
+    /*background: url("../images/home_background.png") no-repeat;*/
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    /*font-family: , serif;*/
+    font-family: "Futura PT Heavy", sans-serif;
+}
+
+.loginBackground {
+    /*font-family: "Futura PT", sans-serif;*/
+    background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.99)),
+    url("assets/images/loginBackGround.png") no-repeat center center fixed;
+    opacity: 0.9;
+    background-blend-mode: screen;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.clear {
+    clear: both;
+}
+
+#wrapper {
+    margin: 0 auto;
+}
+
+nav, aside, section, article, header, footer, main {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+
+header {
+    position: relative;
+    top: 55px;
+}
+
+#logo {
+    background: url("assets/images/logo.png") no-repeat;
+    display: block;
+    width: 23px;
+    height: 53px;
+    margin-left: 175px;
+    float: left;
+    margin-top: -20px;
+}
+
+nav {
+    float: right;
+    margin-right: 65px;
+
+}
+
+nav > ul {
+    list-style-type: none;
+
+}
+
+nav > ul > li {
+    display: inline-block;
+    margin-right: 62px;
+}
+
+nav > ul > li > a {
+    color: white;
+    font-weight: bolder;
+    transition: color 0.4s ease;
+
+}
+
+nav > ul > li > a:hover {
+    color: darkgray;
+}
+
+
