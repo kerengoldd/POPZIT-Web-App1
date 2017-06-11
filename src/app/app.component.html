@@ -5,8 +5,12 @@
             <ul>
                 <li><a href="#">Premium</a></li>
                 <li><a href="#">Help</a></li>
-                <li><a routerLink="auth/signin" routerLinkActive="markNav">Signin</a></li>
-                <li><a routerLink="auth/signup" routerLinkActive="markNav">Signup</a></li>
+                <li *ngIf="isLoggedIn(); else newUser;"><a routerLink="auth/signout">Signout</a></li>
+                <ng-template #newUser>
+                    <li><a routerLink="auth/signin" routerLinkActive="markNav">Signin</a></li>
+                    <li><a routerLink="auth/signup" routerLinkActive="markNav">Signup</a></li>
+                </ng-template>
+
             </ul>
         </nav>
         <div class="clear"></div>

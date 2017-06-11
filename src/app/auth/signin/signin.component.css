@@ -105,3 +105,24 @@ button[type=submit]:hover {
     color: white;
     font-size: small;
 }
+
+/* Change the white to any color ;) */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #242D3E inset;
+    -webkit-text-fill-color: white !important;
+}
+
+input.ng-touched.ng-invalid {
+    border: 1px solid red;
+}
+
+button[disabled] {
+    background: grey;
+    border: 6px solid gray;
+    cursor: not-allowed;
+}
+
+button[disabled]:hover {
+    background: grey;
+    color: white;
+}

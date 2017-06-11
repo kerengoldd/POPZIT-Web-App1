@@ -3,17 +3,22 @@ import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-signout',
-  templateUrl: './signout.component.html',
-  styleUrls: ['./signout.component.css']
+    selector: 'app-signout',
+    templateUrl: './signout.component.html',
+    styleUrls: ['./signout.component.css']
 })
-export class SignoutComponent {
+export class SignoutComponent implements OnInit {
 
-  constructor(private authService:AuthService,
-              private router:Router) {}
+    constructor(private authService:AuthService,
+                private router:Router) {}
 
-  onLogout() {
-    this.authService.signout();
-    this.router.navigate(['/auth', 'signin']);
-  }
+    ngOnInit() {        //We call directly to logout...
+        this.onLogout();
+    }
+
+
+    onLogout() {
+        this.authService.signout();
+        this.router.navigate(['/']);
+    }
 }

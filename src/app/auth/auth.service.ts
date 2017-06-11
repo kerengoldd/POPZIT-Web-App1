@@ -8,11 +8,12 @@ import 'rxjs/Rx';
 export class AuthService {
 
     constructor(private http:Http) {}
+    signedUser:User = null;
 
     signup(user:User) {
         const body = JSON.stringify(user);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('https://mean-stack-course-chat.herokuapp.com/user', body, {headers: headers})
+        return this.http.post('http://localhost:3000/user', body, {headers: headers})
             .map( (response:Response) => response.json())
             .catch( (error:Response) => Observable.throw(error.json()));
     }
@@ -20,13 +21,25 @@ export class AuthService {
     signin(user:User) {
         const body = JSON.stringify(user);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('https://mean-stack-course-chat.herokuapp.com/user/signin', body, {headers: headers})
-            .map( (response:Response) => response.json())
-            .catch( (error:Response) => Observable.throw(error.json()));
+        return this.http.post('http://localhost:3000/user/signin', body, {headers: headers})
+            .map( (response:Response) => {
+                const jsonResponse = response.json();
+
+                //Init the signedUser with the rest of fields.
+                this.signedUser = user;
+                this.signedUser.firstName = jsonResponse.user.firstName;
+                this.signedUser.lastName = jsonResponse.user.lastName;
+                this.signedUser.date = jsonResponse.user.date;
+                this.signedUser.gravatarHash = jsonResponse.user.gravatarHash;
+                console.log(this.signedUser);
+                return jsonResponse;
+            })
+            .catch( (error:Response) => Observable.throw(error));
     }
 
     signout() {
         localStorage.clear();
+        this.signedUser = null;
     }
 
     isLoggedIn() {

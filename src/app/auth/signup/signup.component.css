@@ -72,6 +72,11 @@ input:focus {
     border: 1px solid #016bf8;
 }
 
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #242D3E inset;
+    -webkit-text-fill-color: white !important;
+}
+
 select{
     font-family: "Futura PT", sans-serif;
     border: 0.2px solid white;
@@ -87,6 +92,7 @@ select{
 }
 
 select:focus {
+    background: #242D3E;
     border: 1px solid #016bf8;
 }
 
@@ -124,4 +130,21 @@ button[type=submit]:hover {
 ::-webkit-input-placeholder {
     color: white;
     font-size: small;
+}
+
+
+
+input.ng-touched.ng-invalid, select.ng-touched.ng-invalid {
+    border: 1px solid red;
+}
+
+button[disabled] {
+    background: grey;
+    border: 6px solid gray;
+    cursor: not-allowed;
+}
+
+button[disabled]:hover {
+    background: grey;
+    color: white;
 }
