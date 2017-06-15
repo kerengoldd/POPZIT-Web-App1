@@ -7,8 +7,24 @@ import 'rxjs/Rx';
 @Injectable()
 export class AuthService {
 
-    constructor(private http:Http) {}
     signedUser:User = null;
+
+
+    constructor(private http:Http) {
+        if(this.isLoggedIn()) {
+            const user = JSON.parse(localStorage.getItem('user'));
+            console.log(user.email);
+            this.signedUser = new User(
+                user.email,
+                user.password,
+                user.firstName,
+                user.lastName,
+                user.date,
+                user.gravatarHash
+            );
+        }
+    }
+
 
     signup(user:User) {
         const body = JSON.stringify(user);
@@ -43,6 +59,6 @@ export class AuthService {
     }
 
     isLoggedIn() {
-        return localStorage.getItem('token') !== null;
+        return localStorage.getItem('token') !== null && localStorage.getItem('user') !== null;
     }
 }

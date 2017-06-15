@@ -33,12 +33,30 @@ body {
     background-size: cover;
 }
 
-.clear {
-    clear: both;
+.categoryBackground {
+    background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.99)),
+    url("assets/images/bruno_mars_background.png") no-repeat 95% center fixed;
+    opacity: 0.9;
+    background-blend-mode: screen;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 30%;
 }
 
-#wrapper {
-    margin: 0 auto;
+.dashboardBackground {
+    background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.99)),
+    url("assets/images/dashboard_background.png") no-repeat;
+    background-blend-mode: screen;
+    background-position: inherit;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.clear {
+    clear: both;
 }
 
 nav, aside, section, article, header, footer, main {
@@ -48,49 +66,6 @@ nav, aside, section, article, header, footer, main {
 a {
     text-decoration: none;
     color: white;
-}
-
-
-header {
-    position: relative;
-    top: 55px;
-}
-
-#logo {
-    background: url("assets/images/logo.png") no-repeat;
-    display: block;
-    width: 23px;
-    height: 53px;
-    margin-left: 175px;
-    float: left;
-    margin-top: -20px;
-}
-
-nav {
-    float: right;
-    margin-right: 65px;
-
-}
-
-nav > ul {
-    list-style-type: none;
-
-}
-
-nav > ul > li {
-    display: inline-block;
-    margin-right: 62px;
-}
-
-nav > ul > li > a {
-    color: white;
-    font-weight: bolder;
-    transition: color 0.4s ease;
-
-}
-
-nav > ul > li > a:hover {
-    color: darkgray;
 }
 
 

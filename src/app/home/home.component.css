@@ -10,7 +10,7 @@ main {
     height: 80px;
     width: 140px;
     display: block;
-    margin: 10% auto;
+    margin: 3% auto;
     font-size: 64px;
     font-weight: bolder;
     padding-top: 85px;
@@ -22,12 +22,12 @@ main {
     font-size: 18px;
     color: #ffed00;
     letter-spacing: 0.2px;
-    margin-top: -10%;
-    margin-left: 7%;
+    margin-top: -3%;
+    margin-left: 5%;
 }
 
 #buttons > p {
-    margin-top: 91px;
+    margin-top: 10%;
     color: white;
     font-family: "Futura PT Book", sans-serif;
     font-size: 35px;

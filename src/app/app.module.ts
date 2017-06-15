@@ -9,13 +9,16 @@ import {routing} from "./app.routing";
 import {AuthService} from "./auth/auth.service";
 import {AuthComponent} from "./auth/auth.component";
 import { CategoryComponent } from './category/category.component';
+import {CategoryService} from "./category/category.service";
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         HomeComponent,
         AuthComponent,
-        CategoryComponent
+        CategoryComponent,
+        DashboardComponent
     ],
     imports: [
         BrowserModule,
@@ -23,7 +26,7 @@ import { CategoryComponent } from './category/category.component';
         HttpModule,
         routing
     ],
-    providers: [AuthService],
+    providers: [AuthService, CategoryService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
