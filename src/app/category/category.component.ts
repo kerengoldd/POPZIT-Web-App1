@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import * as $ from 'jquery';
-import {CategoryService} from "./category.service";
-import {Subgenre} from "./subgenre.model";
+import {MusicService} from "../shared/music.service";
+import {Subgenre} from "../shared/subgenre.model";
 import {Router} from "@angular/router";
+import {AuthService} from "../auth/auth.service";
 
 @Component({
     selector: 'app-category',
@@ -17,13 +18,16 @@ export class CategoryComponent implements OnInit, OnDestroy {
 
     isValid:boolean = false;
 
-    constructor(private categoryService:CategoryService,
-                private router:Router) { }
+    constructor(private musicService:MusicService,
+                private router:Router,
+                private authService:AuthService) { }
 
     ngOnInit() {
         $('body').addClass(this.bodyClass);
-
-        this.categoryService.getSubgenres()
+        if(!this.authService.isLoggedIn()) {
+            this.router.navigate(['']);
+        }
+        this.musicService.getSubgenres()
             .subscribe( (categories:Subgenre[]) => this.categories = categories);
 
     }
@@ -44,11 +48,14 @@ export class CategoryComponent implements OnInit, OnDestroy {
     }
 
     onSubmit() {
+        let selectedSubgenres:Subgenre[] = [];
         for(let index in this.categories) {
-            if(this.selectedIndex[index])
-                this.categoryService.selectedSubgenres.push(this.categories[index]);
+            if(this.selectedIndex[index]) {
+                selectedSubgenres.push(this.categories[index]);
+            }
         }
-        console.log(this.categoryService.selectedSubgenres);
+        console.log(selectedSubgenres);
+        this.musicService.initPlaylist(selectedSubgenres);
         this.router.navigate(['/dashboard']);
     }
 }

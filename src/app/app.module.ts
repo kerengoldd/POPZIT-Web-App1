@@ -9,7 +9,7 @@ import {routing} from "./app.routing";
 import {AuthService} from "./auth/auth.service";
 import {AuthComponent} from "./auth/auth.component";
 import { CategoryComponent } from './category/category.component';
-import {CategoryService} from "./category/category.service";
+import {MusicService} from "./shared/music.service";
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
@@ -26,7 +26,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         HttpModule,
         routing
     ],
-    providers: [AuthService, CategoryService],
+    providers: [AuthService, MusicService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

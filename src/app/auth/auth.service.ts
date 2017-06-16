@@ -13,7 +13,6 @@ export class AuthService {
     constructor(private http:Http) {
         if(this.isLoggedIn()) {
             const user = JSON.parse(localStorage.getItem('user'));
-            console.log(user.email);
             this.signedUser = new User(
                 user.email,
                 user.password,
@@ -47,7 +46,6 @@ export class AuthService {
                 this.signedUser.lastName = jsonResponse.user.lastName;
                 this.signedUser.date = jsonResponse.user.date;
                 this.signedUser.gravatarHash = jsonResponse.user.gravatarHash;
-                console.log(this.signedUser);
                 return jsonResponse;
             })
             .catch( (error:Response) => Observable.throw(error));
