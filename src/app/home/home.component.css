@@ -1,6 +1,6 @@
 main {
     margin: auto;
-    width: 50%;
+    width: 80%;
     padding: 10px;
     text-align: center;
 }
@@ -27,7 +27,7 @@ main {
 }
 
 #buttons > p {
-    margin-top: 10%;
+    margin-top: 5%;
     color: white;
     font-family: "Futura PT Book", sans-serif;
     font-size: 35px;
@@ -39,7 +39,7 @@ main {
     margin-right: 10px;
     font-size: 16px;
     /*color: black;*/
-    margin-top: 5%;
+    margin-top: 3%;
     /*background:#f8e81c;*/
     border: 6px solid #ffed00;
     color: white;
@@ -61,7 +61,7 @@ main {
     font-family: "Futura PT Book", sans-serif;
     letter-spacing: 0.30px;
     color: white;
-    margin-top: 12%;
+    margin-top: 10%;
 }
 
 #learnMore a {

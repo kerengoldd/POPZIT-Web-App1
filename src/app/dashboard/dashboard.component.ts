@@ -22,9 +22,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
     selectedSong:Song;
     selectedAlbumOfSong:Album;
 
+    innerHeight;
+
+
     constructor(public authService:AuthService,
                 private musicService:MusicService,
-                private route:Router) { }
+                private route:Router) {innerHeight = window.outerHeight }
 
     ngOnInit() {
         $('body').addClass(this.bodyClass);

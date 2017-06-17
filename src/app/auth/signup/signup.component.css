@@ -66,7 +66,7 @@ input {
     margin: 10px 10px 5px 0;
     color: white;
     padding-left: 40px;
-    display: block;
+    display: inline-block;
 }
 input:focus {
     border: 1px solid #016bf8;
@@ -151,3 +151,13 @@ button[disabled]:hover {
     background: grey;
     color: white;
 }
+
+span {
+    font-size: x-large;
+    margin-left: 5px;
+    text-align: center;
+    vertical-align: -25%;
+}
+
+.greenColor {color: #0df800}
+.redColor {color: red}

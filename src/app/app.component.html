@@ -8,8 +8,8 @@
         </ng-template>
         <nav>
             <ul>
-                <li><a href="#">Premium</a></li>
-                <li><a href="#">Help</a></li>
+                <li><a routerLink=".">Premium</a></li>
+                <li><a routerLink=".">Help</a></li>
                 <li *ngIf="isLoggedIn(); else newUser;"><a routerLink="auth/signout" (click)="user=null">Signout</a></li>
                 <ng-template #newUser>
                     <li><a routerLink="auth/signin" routerLinkActive="markNav">Signin</a></li>

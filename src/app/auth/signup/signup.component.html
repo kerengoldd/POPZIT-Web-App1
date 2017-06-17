@@ -1,17 +1,51 @@
 <section id="fastSign">
     <h4>Fast Sign Up</h4>
-    <a class="socialMediaIcon" href="#"></a>
-    <a class="socialMediaIcon" href="#"></a>
-    <a class="socialMediaIcon" href="#"></a>
+    <a class="socialMediaIcon" routerLink="."></a>
+    <a class="socialMediaIcon" routerLink="."></a>
+    <a class="socialMediaIcon" routerLink="."></a>
     <p>or</p>
     <h4>Sign Up</h4>
 </section>
 <form [formGroup]="form" (submit)="onSubmit()">
-    <input name="firstName" placeholder="first name*" formControlName="firstName">
-    <input name="lastName" placeholder="last name*" formControlName="lastName">
-    <input type="email" name="email" placeholder="email*" formControlName="email">
-    <input type="password" name="password" placeholder="password*" formControlName="password" [(ngModel)]="pass">
-    <input type="password" name="passwordConfirm" placeholder="confirm password*" formControlName="passwordConfirm">
+    <div>
+        <input name="firstName" placeholder="first name*" formControlName="firstName">
+        <ng-template [ngIf]="form.get('firstName').touched">
+            <span class="greenColor" *ngIf=" form.get('firstName').valid;">&#x2714;</span>
+            <span class="redColor" *ngIf="!form.get('firstName').valid;">&#x2718;</span>
+        </ng-template>
+    </div>
+
+    <div>
+        <input name="lastName" placeholder="last name*" formControlName="lastName">
+        <ng-template [ngIf]="form.get('lastName').touched">
+            <span class="greenColor" *ngIf=" form.get('lastName').valid;">&#x2714;</span>
+            <span class="redColor" *ngIf="!form.get('lastName').valid;">&#x2718;</span>
+        </ng-template>
+    </div>
+
+    <div>
+        <input type="email" name="email" placeholder="email*" formControlName="email">
+        <ng-template [ngIf]="form.get('email').touched">
+            <span class="greenColor" *ngIf=" form.get('email').valid;">&#x2714;</span>
+            <span class="redColor" *ngIf="!form.get('email').valid;">&#x2718;</span>
+        </ng-template>
+    </div>
+
+    <div>
+        <input type="password" name="password" placeholder="password*" formControlName="password" [(ngModel)]="pass">
+        <ng-template [ngIf]="form.get('password').touched">
+            <span class="greenColor" *ngIf=" form.get('password').valid;">&#x2714;</span>
+            <span class="redColor" *ngIf="!form.get('password').valid;">&#x2718;</span>
+        </ng-template>
+    </div>
+
+    <div>
+        <input type="password" name="passwordConfirm" placeholder="confirm password*" formControlName="passwordConfirm">
+        <ng-template [ngIf]="form.get('passwordConfirm').touched">
+            <span class="greenColor" *ngIf=" form.get('passwordConfirm').valid;">&#x2714;</span>
+            <span class="redColor" *ngIf="!form.get('passwordConfirm').valid;">&#x2718;</span>
+        </ng-template>
+    </div>
 
     <label>birth of date</label>
     <select name="year" formControlName="year">
