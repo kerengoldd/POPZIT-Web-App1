@@ -8,6 +8,15 @@
 </section>
 <form [formGroup]="form" (submit)="onSubmit()">
     <input type="email" name="email"  placeholder="email address" formControlName="email">
+    <ng-template [ngIf]="form.get('email').touched">
+        <span class="greenColor" *ngIf=" form.get('email').valid;">&#x2714;</span>
+        <span class="redColor" *ngIf="!form.get('email').valid;">&#x2718;</span>
+    </ng-template>
+    <br>
     <input type="password" name="password" placeholder="password" formControlName="password">
+    <ng-template [ngIf]="form.get('password').touched">
+        <span class="greenColor" *ngIf=" form.get('password').valid;">&#x2714;</span>
+        <span class="redColor" *ngIf="!form.get('password').valid;">&#x2718;</span>
+    </ng-template>
     <button type="submit" [disabled]="!form.valid">continue</button>
 </form>

@@ -9,7 +9,6 @@ export class AuthService {
 
     signedUser:User = null;
 
-
     constructor(private http:Http) {
         if(this.isLoggedIn()) {
             const user = JSON.parse(localStorage.getItem('user'));
@@ -18,7 +17,7 @@ export class AuthService {
                 user.password,
                 user.firstName,
                 user.lastName,
-                user.date,
+                user.birthdate,
                 user.gravatarHash
             );
         }
@@ -44,7 +43,7 @@ export class AuthService {
                 this.signedUser = user;
                 this.signedUser.firstName = jsonResponse.user.firstName;
                 this.signedUser.lastName = jsonResponse.user.lastName;
-                this.signedUser.date = jsonResponse.user.date;
+                this.signedUser.birthdate = jsonResponse.user.birthdate;
                 this.signedUser.gravatarHash = jsonResponse.user.gravatarHash;
                 return jsonResponse;
             })

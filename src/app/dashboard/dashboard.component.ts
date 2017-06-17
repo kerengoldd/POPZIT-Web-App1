@@ -16,7 +16,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     bodyClass = 'dashboardBackground';
     albums:Album[] = [];
     songs:Song[] = [];
+
     selectedAlbum:Album;
+
+    selectedSong:Song;
+    selectedAlbumOfSong:Album;
 
     constructor(public authService:AuthService,
                 private musicService:MusicService,
@@ -41,7 +45,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
         console.log(this.songs);
     }
 
-    loadSong(song:Song) {
+    playSong(song:Song) {
+        this.musicService.initSong(song)
+            .subscribe( (parsedSong:Song) => {
+                this.selectedSong = song = parsedSong;
+                this.selectedAlbumOfSong = this.selectedAlbum;
+            });
+    }
+
+    addToPlaylist(song:Song) {
         console.log(song);
     }
 }

@@ -1,12 +1,3 @@
-
-.loginBackground {
-    /*font-family: "Futura PT", sans-serif;*/
-    background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.99)),
-                url("../../../assets/images/loginBackGround.png") no-repeat !important;
-    opacity: 0.9 !important;
-    background-blend-mode: screen !important;
-}
-
 section {
     width: 60%;
     margin: 100px auto;
@@ -73,7 +64,7 @@ input {
     margin: 10px 10px 5px 0;
     color: white;
     padding-left: 40px;
-    display: block;
+    display: inline-block;
 }
 input:focus {
     border: 1px solid #016bf8;
@@ -116,6 +107,10 @@ input.ng-touched.ng-invalid {
     border: 1px solid red;
 }
 
+input.ng-touched.ng-valid {
+    border: 1px solid #0df800;
+}
+
 button[disabled] {
     background: grey;
     border: 6px solid gray;
@@ -126,3 +121,13 @@ button[disabled]:hover {
     background: grey;
     color: white;
 }
+
+span {
+    font-size: x-large;
+    margin-left: 5px;
+    text-align: center;
+    vertical-align: -25%;
+}
+
+.greenColor {color: #0df800}
+.redColor {color: red}

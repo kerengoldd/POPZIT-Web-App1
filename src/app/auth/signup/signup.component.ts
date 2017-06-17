@@ -4,8 +4,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Month} from "./month.enum";
 import {Observable} from "rxjs/Observable";
 import {User} from "../user.model";
-import {Md5} from 'ts-md5/dist/md5';
 import {AuthService} from "../auth.service";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-signup',
@@ -22,7 +22,8 @@ export class SignupComponent implements OnInit, OnDestroy {
     days:number[] = [];
     months;
     Month = Month;
-    constructor(private authService:AuthService) {
+    constructor(private authService:AuthService,
+                private router:Router) {
         let nowYear = new Date().getFullYear();
         for(let i = 1948; i <= nowYear; i++) {
             this.years.push(i);
@@ -56,15 +57,12 @@ export class SignupComponent implements OnInit, OnDestroy {
         let birthdate = new Date(this.form.value.year,
                                  this.form.value.month-1,
                                  this.form.value.day);
-        let hashGravatar =  Md5.hashStr(this.form.value.email).toString();
-
         const user = new User(
             this.form.value.email,
             this.form.value.password,
             this.form.value.firstName,
             this.form.value.lastName,
             birthdate,
-            hashGravatar
         );
 
         this.authService.signup(user).subscribe(
@@ -72,6 +70,7 @@ export class SignupComponent implements OnInit, OnDestroy {
             error => console.log(error)
         );
         this.form.reset();
+        this.router.navigate(['/']);
     }
 
     passwordValidate(control:FormControl):Promise<any> | Observable<any> {

@@ -4,6 +4,6 @@ export class User {
                 public password:string,
                 public firstName?:string,
                 public lastName?:string,
-                public date?:Date,
+                public birthdate?:Date,
                 public gravatarHash?:string) {}
 }

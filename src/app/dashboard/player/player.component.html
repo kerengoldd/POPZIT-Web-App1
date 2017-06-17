@@ -1,0 +1,11 @@
+<section id="playerContainer">
+    <button id="addButton" (click)="addToPlaylist()"></button>
+    <img id="albumPicture" src="{{album.imagePath}}" alt="{{album.name}}">
+    <section id="songDetails">
+        <p>{{song.name}}</p>
+        <span>{{album.artist}}</span>
+    </section>
+
+    <!--<iframe width="5" height="5" src="https://www.youtube.com/embed/{{song.youtubeId}}&autoplay=1" frameborder="0" autoplay></iframe>-->
+    <a href="https://www.youtube.com/watch?v={{song.youtubeId}}" target="_blank">Click to Listen</a>
+</section>

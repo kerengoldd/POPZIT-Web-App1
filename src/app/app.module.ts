@@ -11,6 +11,7 @@ import {AuthComponent} from "./auth/auth.component";
 import { CategoryComponent } from './category/category.component';
 import {MusicService} from "./shared/music.service";
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PlayerComponent } from './dashboard/player/player.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         HomeComponent,
         AuthComponent,
         CategoryComponent,
-        DashboardComponent
+        DashboardComponent,
+        PlayerComponent
     ],
     imports: [
         BrowserModule,

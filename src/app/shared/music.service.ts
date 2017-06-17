@@ -14,7 +14,7 @@ export class MusicService {
     constructor(private http:Http) {}
 
     getSubgenres() {
-        return this.http.get('http://localhost:3000/subgenre')
+        return this.http.get('http://localhost:3000/music/defaultSubgenres')
             .map( (response) => {
                 const subgenresJson = response.json();
                 let transformedSubgenres:Subgenre[] = [];
@@ -30,34 +30,21 @@ export class MusicService {
             .catch( (error:Response) => Observable.throw(error.json() ))
     }
 
-
     //noinspection JSMethodCanBeStatic
     initPlaylist(selectedSubgenres:Subgenre[]) {
         for(let subgenre of selectedSubgenres) {
             this.selectedAlbums.push(...subgenre.albums);
         }
-        console.log(this.selectedAlbums.length);
     }
-
 
     initSong(song:Song) {
+        return this.http.get(`http://localhost:3000/music/song?artist=${(<any>(song.artist)).name}&track=${song.name}`)
 
+            .map( (response) => {
+                const parsedSongJson = response.json();
+                song.youtubeId =  parsedSongJson.youtubeId;
+                return song;
+            })
+            .catch( (error:Response) => Observable.throw(error.json()) )
     }
-
-    //noinspection JSMethodCanBeStatic
-    loadSongsFromAlbum(album:Album) {
-        // console.log(album.songs);
-        //
-        // const body = JSON.stringify(album);
-        // const headers = new Headers({'Content-Type': 'application/json'});
-        //
-        // return this.http.post('http://localhost:3000/subgenre/album_songs', body, {headers: headers})
-        //     .map( (response) => {
-        //         const jsonResponse = response.json();
-        //         console.log(jsonResponse);
-        //     })
-        //     .catch( (error:Response) => Observable.throw(error.json() ))
-
-    }
-
 }

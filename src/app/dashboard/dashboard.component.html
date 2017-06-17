@@ -23,10 +23,10 @@
 </section>
 <section id="playlistDisplay">
     <h4><ng-template [ngIf]="selectedAlbum">{{selectedAlbum.artist}}</ng-template> Playlist</h4>
-    <section *ngFor="let song of songs" class="songBlock" (click)="loadSong(song)">
+    <section *ngFor="let song of songs" class="songBlock">
         <div class="songButtons">
-            <button (click)="playSong()"></button>
-            <button></button>
+            <button (click)="playSong(song)"></button>
+            <button (click)="addToPlaylist(song)"></button>
         </div>
         <div class="songDetails">
             <p>{{song.name}}</p>
@@ -35,9 +35,8 @@
         <div class="clear"></div>
     </section>
 </section>
-
-
-<section id="player">
-
-</section>
+<!--<app-player></app-player>-->
+<ng-template [ngIf]="selectedSong">
+    <app-player [album]="selectedAlbumOfSong" [song]="selectedSong"></app-player>
+</ng-template>
 <div class="clear"></div>
