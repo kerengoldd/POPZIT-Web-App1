@@ -23,7 +23,7 @@ body {
 .loginBackground {
     /*font-family: "Futura PT", sans-serif;*/
     background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.99)),
-    url("assets/images/loginBackGround.png") no-repeat center center fixed;
+    url("assets/images/login_background.png") no-repeat center center fixed;
     opacity: 0.9;
     background-blend-mode: screen;
 
