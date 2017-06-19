@@ -14,7 +14,7 @@ export class MusicService {
     constructor(private http:Http) {}
 
     getSubgenres() {
-        return this.http.get('http://localhost:3000/music/defaultSubgenres')
+        return this.http.get('https://popzit-ws.herokuapp.com/music/defaultSubgenres')
             .map( (response) => {
                 const subgenresJson = response.json();
                 let transformedSubgenres:Subgenre[] = [];
@@ -38,7 +38,7 @@ export class MusicService {
     }
 
     initSong(song:Song) {
-        return this.http.get(`http://localhost:3000/music/song?artist=${(<any>(song.artist)).name}&track=${song.name}`)
+        return this.http.get(`https://popzit-ws.herokuapp.com/music/song?artist=${(<any>(song.artist)).name}&track=${song.name}`)
 
             .map( (response) => {
                 const parsedSongJson = response.json();

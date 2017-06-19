@@ -13,6 +13,7 @@ import {MusicService} from "./shared/music.service";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PlayerComponent } from './dashboard/player/player.component';
 
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -26,7 +27,7 @@ import { PlayerComponent } from './dashboard/player/player.component';
         BrowserModule,
         FormsModule,
         HttpModule,
-        routing
+        routing,
     ],
     providers: [AuthService, MusicService],
     bootstrap: [AppComponent]
