@@ -1,14 +1,11 @@
 <section id="playerContainer">
     <button id="addButton" (click)="addToPlaylist()"></button>
-    <img id="albumPicture" src="{{album.imagePath}}" alt="{{album.name}}">
+    <img id="albumPicture" src="{{song.album.imagePath}}" alt="{{song.album.name}}">
     <section id="songDetails">
         <p>{{song.name}}</p>
-        <span>{{album.artist}}</span>
+        <span>{{song.album.artist}}</span>
     </section>
 
-    <!--<iframe width="10" height="10" [src]="sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + song.youtubeId)" frameborder="0"></iframe>-->
-
-    <!--<iframe id="player" width="10" height="10" [src]="'https://www.youtube.com/embed/' + song.youtubeId | safe" frameborder="0"></iframe>-->
     <youtube-player
             [videoId]="song.youtubeId"
             (ready)="savePlayer($event)"
@@ -21,12 +18,8 @@
         <span>{{player?.getDuration() | duration }}</span>
     </section>
 
-
-    <button id="leftSong" type="button"></button>
+    <button id="leftSong" type="button" (click)="prevSong()"></button>
     <button id="toggleVideo" type="button" (click)="toggleVideo()"></button>
-    <button id="rightSong" type="button"></button>
+    <button id="rightSong" type="button" (click)="nextSong()"></button>
     <button id="toggleSound" type="button" (click)="toggleSound()"></button>
-
-
-    <!--<a href="https://www.youtube.com/watch?v={{song.youtubeId}}" target="_blank">Click to Listen</a>-->
 </section>

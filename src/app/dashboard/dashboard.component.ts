@@ -5,6 +5,7 @@ import {MusicService} from "../shared/music.service";
 import {Router} from "@angular/router";
 import {Album} from "../shared/album.model";
 import {Song} from "../shared/song.model";
+import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
     selector: 'app-dashboard',
@@ -18,9 +19,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     songs:Song[] = [];
 
     selectedAlbum:Album;
-
     selectedSong:Song;
-    selectedAlbumOfSong:Album;
 
     constructor(public authService:AuthService,
                 private musicService:MusicService,
@@ -36,22 +35,19 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         $('body').removeClass(this.bodyClass);
-
         this.musicService.selectedAlbums = [];
     }
 
     loadAlbum(album:Album) {
         this.songs = album.songs;
+        for(let song of this.songs) song.album = album;
         this.selectedAlbum = album;
-        // console.log(this.selectedAlbum);
-        // console.log(this.songs);
     }
 
     playSong(song:Song) {
         this.musicService.initSong(song)
             .subscribe( (parsedSong:Song) => {
                 this.selectedSong = song = parsedSong;
-                this.selectedAlbumOfSong = this.selectedAlbum;
             });
     }
 

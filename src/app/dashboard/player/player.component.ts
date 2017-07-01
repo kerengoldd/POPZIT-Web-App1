@@ -13,7 +13,6 @@ import {MusicService} from "../../shared/music.service";
 export class PlayerComponent implements OnInit, OnChanges, OnDestroy {
 
     @Input() song:Song;
-    @Input() album:Album;
 
     private player:YT.Player;
     private ytEvent;
@@ -51,11 +50,12 @@ export class PlayerComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     startInterval() {
+        let progress = $('progress');
         this.songDurationInterval = setInterval(
             () => {
                 if (this.player.getCurrentTime() <= this.player.getDuration()) {
                     this.currTime = this.player.getCurrentTime();
-                    $('progress').val(Math.round((this.currTime / this.player.getDuration())*100));
+                    progress.val(Math.floor(Math.round((this.currTime / this.player.getDuration())*100)));
                 }
                 else {
                     clearInterval(this.songDurationInterval);
@@ -118,9 +118,19 @@ export class PlayerComponent implements OnInit, OnChanges, OnDestroy {
         let progress = $('progress');
         let x = event.pageX - progress.offset().left;
         let clickedValue = x * 100 / progress.outerWidth();
-        progress.val(Math.floor(clickedValue));
+        progress.val(Math.round(Math.floor(clickedValue)));
 
         let jumping = this.player.getDuration() * (clickedValue/100);
         this.player.seekTo(jumping,true);
+    }
+
+    prevSong() {
+        this.song = this.musicService.getPrevSong();
+        this.ngOnChanges(null);
+    }
+
+    nextSong() {
+        this.song = this.musicService.getNextSong();
+        this.ngOnChanges(null);
     }
 }

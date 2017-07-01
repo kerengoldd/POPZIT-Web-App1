@@ -12,6 +12,7 @@ export class MusicService {
     selectedAlbums:Album[] = [];
 
     private playlist:Song[] = [];
+    private currentSongIndex = 0;
 
     constructor(private http:Http) {
         this.playlist.map( (song) => song.name );
@@ -52,12 +53,25 @@ export class MusicService {
             .catch( (error:Response) => Observable.throw(error.json()) )
     }
 
+
+
     addSongToPlaylist(song:Song) {
         let indexSong = this.playlist.indexOf(song);
         if(!this.playlist[indexSong]) {
-            this.playlist.push(song);
+            this.initSong(song)
+                .subscribe( (parsedSong:Song) => {
+                    this.playlist.push(song = parsedSong);
+                });
         }
+    }
 
-        console.log(this.playlist);
+    getNextSong() {
+        this.currentSongIndex++;
+        return this.playlist[this.currentSongIndex %= this.playlist.length];
+    }
+
+    getPrevSong() {
+        this.currentSongIndex = this.currentSongIndex-1 == -1 ? this.playlist.length-1 : --this.currentSongIndex;
+        return this.playlist[this.currentSongIndex %= this.playlist.length];
     }
 }
