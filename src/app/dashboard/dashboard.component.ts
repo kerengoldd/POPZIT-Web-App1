@@ -22,9 +22,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     selectedSong:Song;
     selectedAlbumOfSong:Album;
 
-    innerHeight;
-
-
     constructor(public authService:AuthService,
                 private musicService:MusicService,
                 private route:Router) {innerHeight = window.outerHeight }
@@ -39,13 +36,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         $('body').removeClass(this.bodyClass);
+
+        this.musicService.selectedAlbums = [];
     }
 
     loadAlbum(album:Album) {
         this.songs = album.songs;
         this.selectedAlbum = album;
-        console.log(this.selectedAlbum);
-        console.log(this.songs);
+        // console.log(this.selectedAlbum);
+        // console.log(this.songs);
     }
 
     playSong(song:Song) {
@@ -57,6 +56,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
     addToPlaylist(song:Song) {
-        console.log(song);
+        this.musicService.addSongToPlaylist(song);
     }
 }

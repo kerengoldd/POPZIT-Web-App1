@@ -35,7 +35,7 @@
         <input type="password" name="password" placeholder="password*" formControlName="password" [(ngModel)]="pass">
         <ng-template [ngIf]="form.get('password').touched">
             <span class="greenColor" *ngIf=" form.get('password').valid;">&#x2714;</span>
-            <span class="redColor" *ngIf="!form.get('password').valid;">&#x2718;</span>
+            <span class="redColor" *ngIf="!form.get('password').valid;">&#x2718; Must be 6 chars</span>
         </ng-template>
     </div>
 
@@ -43,7 +43,7 @@
         <input type="password" name="passwordConfirm" placeholder="confirm password*" formControlName="passwordConfirm">
         <ng-template [ngIf]="form.get('passwordConfirm').touched">
             <span class="greenColor" *ngIf=" form.get('passwordConfirm').valid;">&#x2714;</span>
-            <span class="redColor" *ngIf="!form.get('passwordConfirm').valid;">&#x2718;</span>
+            <span class="redColor" *ngIf="!form.get('passwordConfirm').valid;">&#x2718; Password not match</span>
         </ng-template>
     </div>
 

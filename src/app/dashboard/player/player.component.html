@@ -6,6 +6,27 @@
         <span>{{album.artist}}</span>
     </section>
 
-    <!--<iframe width="5" height="5" src="https://www.youtube.com/embed/{{song.youtubeId}}&autoplay=1" frameborder="0" autoplay></iframe>-->
-    <a href="https://www.youtube.com/watch?v={{song.youtubeId}}" target="_blank">Click to Listen</a>
+    <!--<iframe width="10" height="10" [src]="sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + song.youtubeId)" frameborder="0"></iframe>-->
+
+    <!--<iframe id="player" width="10" height="10" [src]="'https://www.youtube.com/embed/' + song.youtubeId | safe" frameborder="0"></iframe>-->
+    <youtube-player
+            [videoId]="song.youtubeId"
+            (ready)="savePlayer($event)"
+            (change)="onStateChange($event)">
+    </youtube-player>
+
+    <section id="seekBar">  <!--Seek Bar -->
+        <span>{{currTime | duration}}</span>
+        <progress max="100" (click)="jumpTo($event)"></progress>
+        <span>{{player?.getDuration() | duration }}</span>
+    </section>
+
+
+    <button id="leftSong" type="button"></button>
+    <button id="toggleVideo" type="button" (click)="toggleVideo()"></button>
+    <button id="rightSong" type="button"></button>
+    <button id="toggleSound" type="button" (click)="toggleSound()"></button>
+
+
+    <!--<a href="https://www.youtube.com/watch?v={{song.youtubeId}}" target="_blank">Click to Listen</a>-->
 </section>

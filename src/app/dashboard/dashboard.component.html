@@ -17,7 +17,7 @@
             *ngFor="let album of albums"
             class="albumBlock"
             [ngStyle]="{'background': 'url(' + album.imagePath + ') no-repeat'}"
-            (click)="loadAlbum(album)">
+            (click)="loadAlbum(album, $event)">
         <span>{{album.artist}}</span>
     </section>
 </section>
@@ -25,8 +25,8 @@
     <h4><ng-template [ngIf]="selectedAlbum">{{selectedAlbum.artist}}</ng-template> Playlist</h4>
     <section *ngFor="let song of songs" class="songBlock">
         <div class="songButtons">
-            <button (click)="playSong(song)"></button>
-            <button (click)="addToPlaylist(song)"></button>
+            <button type="button" (click)="playSong(song)"></button>
+            <button type="button" (click)="addToPlaylist(song)"></button>
         </div>
         <div class="songDetails">
             <p>{{song.name}}</p>

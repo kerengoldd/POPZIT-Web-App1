@@ -81,7 +81,7 @@ export class SignupComponent implements OnInit, OnDestroy {
                         if(control.value !== this.pass)
                             resolve({'passwordNotMatch': true});
                         else resolve(null);
-                    },700);
+                    },500);
             }
         );
     }

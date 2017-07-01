@@ -11,10 +11,14 @@ export class MusicService {
 
     selectedAlbums:Album[] = [];
 
-    constructor(private http:Http) {}
+    private playlist:Song[] = [];
+
+    constructor(private http:Http) {
+        this.playlist.map( (song) => song.name );
+    }
 
     getSubgenres() {
-        return this.http.get('https://popzit-ws.herokuapp.com/music/defaultSubgenres')
+        return this.http.get('http://localhost:3000/music/defaultSubgenres')
             .map( (response) => {
                 const subgenresJson = response.json();
                 let transformedSubgenres:Subgenre[] = [];
@@ -38,7 +42,7 @@ export class MusicService {
     }
 
     initSong(song:Song) {
-        return this.http.get(`https://popzit-ws.herokuapp.com/music/song?artist=${(<any>(song.artist)).name}&track=${song.name}`)
+        return this.http.get(`http://localhost:3000/music/youtubeSong?artist=${(<any>(song.artist)).name}&track=${song.name}`)
 
             .map( (response) => {
                 const parsedSongJson = response.json();
@@ -46,5 +50,14 @@ export class MusicService {
                 return song;
             })
             .catch( (error:Response) => Observable.throw(error.json()) )
+    }
+
+    addSongToPlaylist(song:Song) {
+        let indexSong = this.playlist.indexOf(song);
+        if(!this.playlist[indexSong]) {
+            this.playlist.push(song);
+        }
+
+        console.log(this.playlist);
     }
 }
